@@ -13,6 +13,13 @@ class Image(models.Model):
     likes = models.ForeignKey(User, related_name='liked_by', on_delete=models.CASCADE,blank=True, null=True)
     comments = models.ForeignKey('Comment', on_delete=models.CASCADE, blank = True, null=True)
 
+    def save_image(self):
+        self.save()
+    
+    def delete_image(self):
+        self.delete()
+    
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_photo = CloudinaryField('image')
@@ -31,7 +38,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True,null=True)
     image_id = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, blank=True)
-    
+
     def add_comment(self):
         self.save()
 
