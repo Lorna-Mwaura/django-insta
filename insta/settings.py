@@ -138,3 +138,5 @@ cloudinary.config(
   api_secret = "YQghV-b5GPMKpOAwMTZvxb4js5M" 
 )
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'welcome'
+LOGIN_URL = 'login'
