@@ -2,10 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
+from .models import *
 
 # Create your views here.
+@login_required
 def welcome(request):
-    return render(request,"welcome.html")
+    title="Instagram-Clone"
+    images =Image.objects.all()
+    return render(request,"welcome.html", {'images':images})
 
 def register(request):
     if request.method == 'POST':
@@ -34,10 +38,11 @@ def profile(request):
 
     else:
         u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
+        # p_form = ProfileUpdateForm(instance=request.user.profile)
+
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        # 'p_form': p_form
     }
     return render(request, 'users/profile.html', context)

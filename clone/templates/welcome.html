@@ -1,4 +1,29 @@
 {% extends 'base.html'%}
 {% block content%}
-<h1>Hello World </h1>
+
+<section class="text-black">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-6 mt-3" style="width:50%; height:50%;"> 
+        
+                <div class="card">
+                    {% if images %}
+                    {% for image in images %}
+                    {{image.user.username}}
+
+                    <img src="{{image.image.url}}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{image.caption}}</h5>
+                      <p class="card-text">11 <i class="far fa-heart"></i>{{image.like}}</p>
+                      <p><i class="fa-solid fa-comment"></i> Add a comment</p>
+                    </div>
+                  </div>
+  
+ {% endfor %}
+ {% endif %}
+</div>
+<div class="col-2"></div>
+</div>
+</section>
+
 {% endblock%}

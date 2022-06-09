@@ -28,19 +28,19 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
     
     def save(self):
-        super().save()
+        self.save()
 class Like(models.Model):
     like= models.IntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image_liked = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    image_liked = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return str(self.like)
 
 class Comment(models.Model):
     message= models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_on = models.DateTimeField(auto_now_add=True,null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     image_id = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, blank=True)
 
     def add_comment(self):
