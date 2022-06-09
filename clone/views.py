@@ -5,7 +5,6 @@ from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 from .models import *
 
 # Create your views here.
-@login_required
 def welcome(request):
     title="Instagram-Clone"
     images =Image.objects.all()
