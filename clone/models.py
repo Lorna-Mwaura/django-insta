@@ -2,7 +2,6 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 class Image(models.Model):
     image = CloudinaryField('image')
@@ -25,6 +24,11 @@ class Profile(models.Model):
     profile_photo = CloudinaryField('image')
     bio = models.TextField()
 
+    def __str__(self):
+        return f'{self.user.username} Profile'
+    
+    def save(self):
+        super().save()
 class Like(models.Model):
     like= models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
