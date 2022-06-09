@@ -9,9 +9,9 @@
                 <div class="card">
                     {% if images %}
                     {% for image in images %}
-                    {{image.user.username}}
-
-                    <img src="{{image.image.url}}">
+                    <p class="mt-3">{{image.user.username}}</p>
+                  
+                    <img src="{{image.image.url}}" width="400vw">
                     <div class="card-body">
                       <h5 class="card-title">{{image.caption}}</h5>
                       <p class="card-text">11 <i class="far fa-heart"></i>{{image.like}}</p>
